@@ -17,6 +17,7 @@ struct alru {
   alru_uint64_t size;
   alru_uint64_t max;
   alru_uint64_t **cache;
+  alru_evict_f *evict;
   ALRUvoid *alloc;
 };
 
@@ -25,17 +26,22 @@ struct alru {
  * a max cache size. If an already
  */
 ALRU_EXPORT ALRUboolean
-alru_init(alru_t *alru, const alru_uint64_t max);
+alru_init(alru_t *alru, alru_uint64_t collisions, alru_uint64_t max);
 
 /**
  */
 ALRU_EXPORT ALRUboolean
-alru_set(alru_t *alru, const alru_uint64_t index, const alru_uintptr_t value);
+alru_deinit(alru_t *alru);
+
+/**
+ */
+ALRU_EXPORT ALRUboolean
+alru_set(alru_t *alru, alru_uint64_t index, alru_uintptr_t value);
 
 /**
  */
 ALRU_EXPORT alru_uintptr_t
-alru_get(alru_t *alru, const alru_uint64_t index);
+alru_get(alru_t *alru, alru_uint64_t index);
 
 /**
  */
@@ -45,17 +51,8 @@ alru_clear(alru_t *alru);
 /**
  * Allocates and returns a new `alru_t *' pointer.
  */
-inline ALRU_EXPORT alru_t *
-alru(const alru_uint64_t max) {
-  alru_t *self = (alru_t *) malloc(sizeof(alru));
-  if (self) {
-    if (ALRU_FALSE == alru_init(self, max)) {
-      free(self);
-      self = 0;
-    }
-  }
-  return self;
-}
+ALRU_EXPORT alru_t *
+alru(alru_uint64_t collisions, alru_uint64_t max);
 
 #if defined(__cplusplus)
 }
