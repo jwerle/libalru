@@ -9,7 +9,7 @@ extern "C" {
 #include "common.h"
 
 typedef struct alru alru_t;
-typedef ALRUvoid (alru_evict_f)(alru_t *alru, alru_uint64_t index, alru_uint64_t value);
+typedef ALRUvoid (alru_evict_f)(alru_t *, alru_uint64_t, alru_uintptr_t);
 
 struct alru {
   alru_uint64_t collisions;

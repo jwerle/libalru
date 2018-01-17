@@ -31,6 +31,14 @@ $ sudo make install
 
 ## API
 
+### `typedef struct alru alru_t;`
+
+TODO
+
+### `typedef ALRUvoid (alru_evict_f)(alru_t *, alru_uint64_t, alru_uintptr_t);`
+
+TODO
+
 ### `ALRUboolean alru_init(alru_t *alru, const alru_uint64_t max);`
 
 Initializes an already allocated `alru_t *` pointer with
