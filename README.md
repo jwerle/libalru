@@ -23,7 +23,7 @@ Or from source do:
 
 ```sh
 $ git clone git@github.com:jwerle/libalru.git
-$ cd librara
+$ cd libalru
 $ ./configure
 $ make
 $ sudo make install
@@ -31,7 +31,26 @@ $ sudo make install
 
 ## API
 
+### `ALRUboolean alru_init(alru_t *alru, const alru_uint64_t max);`
+
+Initializes an already allocated `alru_t *` pointer with
+a max cache size. If an already
+
+### `ALRUboolean alru_set(alru_t *alru, const alru_uint64_t index, const alru_uintptr_t value);`
+
 TODO
+
+### `alru_uintptr_t alru_get(alru_t *alru, const alru_uint64_t index);`
+
+TODO
+
+### `ALRUboolean alru_clear(alru_t *alru);`
+
+TODO
+
+### `inline ALRU_EXPORT alru_t * alru(const alru_uint64_t max);`
+
+Allocates and returns a new `alru_t *` pointer.
 
 ## Example
 
