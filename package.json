@@ -1,0 +1,17 @@
+{
+  "name": "libalru",
+  "version": "0.1.0",
+  "repo": "jwerle/libalru",
+  "keywords": [],
+  "description": "libalru is a library for creating really fast numeric based LRU caches that leverage an optimized CRC-16-CCITT.",
+  "development": {
+    "stephenmathieson/describe.h": "2.1.2"
+  },
+  "dependencies": {},
+  "src": [
+    "include/alru/alru.h",
+    "include/alru/common.h",
+    "src/alru.c",
+    "src/crc16.c"
+  ]
+}
